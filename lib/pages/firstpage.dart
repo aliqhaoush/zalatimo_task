@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zalatimo/infintyscroll/infintyscrollriver.dart';
+import 'package:zalatimo/infinitescroll/infinite_scroll.dart';
 import 'package:zalatimo/variabels/colors.dart';
 
 import 'HomePage.dart';

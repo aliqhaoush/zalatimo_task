@@ -1,6 +1,3 @@
-// ignore: file_names
-// ignore_for_file: file_names, duplicate_ignore
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -86,7 +83,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   ////======================== Get The Currency ========================////
-  String currency = '';
+  String currency = 'JOD';
   Future<void> getCurrency() async {
     final response = await http.get(Uri.parse(
         'https://zalatimoprod.rhinosoft.io/api/products?maxPrice=1000&minPrice=0&modes=ALL&page=1&pageSize=21'));
@@ -232,17 +229,21 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                     const SizedBox(height: 2.5),
-                                    Text(
-                                      productsResult.products[index].name,
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(
-                                        color: itemsColor,
-                                        fontFamily: "Myriad",
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 18),
+                                      child: Text(
+                                        productsResult.products[index].name,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          color: itemsColor,
+                                          fontFamily: "Myriad",
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
                                     ),
                                     const SizedBox(height: 2),
                                     Text(
@@ -298,7 +299,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     if (currentPage > 1)
                       Padding(
-                        padding: const EdgeInsets.all(1),
+                        padding: const EdgeInsets.all(3),
                         child: InkWell(
                           // ============ Back Button ============= //
                           onTap: () {
@@ -313,14 +314,16 @@ class _HomePageState extends State<HomePage> {
                               color: buttonsColor,
                             ),
                             padding: const EdgeInsets.all(12),
-                            child: const Icon(
-                              Icons.arrow_back_ios,
-                              color: backgroundColor,
+                            child: const Padding(
+                              padding: EdgeInsets.only(left: 3),
+                              child: Icon(
+                                Icons.arrow_back_ios,
+                                color: backgroundColor,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    const SizedBox(width: 10),
                     //To Count The Number of items and divied on pageSize to get the buttons number//
                     //================ .ceil is used if the back is not int make it int ===============//
                     for (var i = 1; i <= (productCount / pageSize).ceil(); i++)
@@ -329,7 +332,7 @@ class _HomePageState extends State<HomePage> {
                           i == (productCount / pageSize).ceil() ||
                           (i > currentPage - 2 && i < currentPage + 2))
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(7.0),
                           child: InkWell(
                             onTap: () {
                               setState(() {
@@ -359,10 +362,10 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                    const SizedBox(width: 10),
+                    const SizedBox(width: 7),
                     if (currentPage < (productCount / pageSize).ceil())
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(7.0),
                         //=============== Foraward Button ===============//
                         child: InkWell(
                           onTap: () {
@@ -377,9 +380,12 @@ class _HomePageState extends State<HomePage> {
                               color: buttonsColor,
                             ),
                             padding: const EdgeInsets.all(12),
-                            child: const Icon(
-                              Icons.arrow_forward_ios,
-                              color: backgroundColor,
+                            child: const Padding(
+                              padding: EdgeInsets.only(right: 3),
+                              child: Icon(
+                                Icons.arrow_forward_ios,
+                                color: backgroundColor,
+                              ),
                             ),
                           ),
                         ),

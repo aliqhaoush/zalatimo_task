@@ -9,7 +9,6 @@ class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _ProductListScreenState createState() => _ProductListScreenState();
 }
 
@@ -129,17 +128,21 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                     ),
                                   ),
                                   const SizedBox(height: 2.5),
-                                  Text(
-                                    product.name,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      color: itemsColor,
-                                      fontFamily: "Myriad",
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 18),
+                                    child: Text(
+                                      product.name,
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                        color: itemsColor,
+                                        fontFamily: "Myriad",
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
                                   ),
                                   Text(
                                     "${product.price.toString()} $currency",
